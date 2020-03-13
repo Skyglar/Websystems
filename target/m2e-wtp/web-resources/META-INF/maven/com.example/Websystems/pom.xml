@@ -18,78 +18,182 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <springCoreVersion>3.2.4.RELEASE</springCoreVersion>
-    <hibernateVersion>4.2.0.Final</hibernateVersion>
+    <hibernateVersion>4.1.9.Final</hibernateVersion>
   </properties>
 
   <dependencies>
-  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
-	<dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-web</artifactId>
-   	 	<version>${springCoreVersion}</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-	<dependency>
-   	 	<groupId>org.springframework</groupId>
-    	<artifactId>spring-webmvc</artifactId>
-    	<version>${springCoreVersion}</version>
-	</dependency>
-	<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${springCoreVersion}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-core</artifactId>
-		<version>${springCoreVersion}</version>
-	</dependency>
-	<dependency>
+  	<!-- necessary mvc dependencies -->
+  	<!-- spring context provides spring core -->
+  	<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${springCoreVersion}</version>
-				<!-- <exclusions>
+			<exclusions>
 					<exclusion>
 						<groupId>commons-logging</groupId>
 						<artifactId>commons-logging</artifactId>
 					</exclusion>
-				</exclusions> -->
-	</dependency>
-  	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>javax.servlet-api</artifactId>
-		<version>4.0.0</version>
-		<scope>provided</scope>
-	</dependency>
-
-	<dependency>
-		<groupId>javax.servlet.jsp</groupId>	
-		<artifactId>javax.servlet.jsp-api</artifactId>
-		<version>2.3.1</version>
-		<scope>provided</scope>
-	</dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    
-	
-   <!-- 
-	<dependency>
-    	<groupId>org.slf4j</groupId>
-    	<artifactId>jcl-over-slf4j</artifactId>
-    	<version>1.7.21</version>
-	</dependency>
-	https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-	<dependency>
-   	 	<groupId>ch.qos.logback</groupId>
-    	<artifactId>logback-classic</artifactId>
-    	<version>1.1.7</version>
-    	<scope>test</scope>
-	</dependency> -->
-	
+			</exclusions> 
+		</dependency>
+		<!-- Additional classes or something :\ -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${springCoreVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${springCoreVersion}</version>
+		</dependency>
+		<!--spring aop add aop modules  -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${springCoreVersion}</version>
+		</dependency>
+		<!-- webmvc contains MVC modules and REST services implementation for web -->
+  		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springCoreVersion}</version>
+		</dependency>
+		<!-- The spring web module provides basic web oriented integration features such as multipart file upload
+			and initialization of IoC container using servlet listener and web-oriented application context
+		 -->
+  		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springCoreVersion}</version>
+		</dependency>
+  		<!-- end of main mvc dependencies -->
+  		<!-- Spring TX -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springCoreVersion}</version>
+        </dependency>
+  		
+  		<!-- Spring database necessary dependencies -->
+  		
+  		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.11.9.RELEASE</version>
+		</dependency>
+		
+		<!-- Used for Hibernate4 LocalSessionFactoryBean -->	
+  		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${springCoreVersion}</version>
+		</dependency>
+  		
+  		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.14</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!--  we are using a proper connection pool instead of the dev-only
+		 Spring implementation – the DriverManagerDataSource.  -->
+		<!-- <dependency>
+    		<groupId>org.apache.tomcat</groupId>
+    		<artifactId>tomcat-dbcp</artifactId>
+    		<version>7.0.100</version>
+		</dependency> -->
+		<dependency>
+    		<groupId>c3p0</groupId>
+    		<artifactId>c3p0</artifactId>
+    		<version>0.9.1.2</version>
+    	</dependency>
+		
+		<!-- hz why this is needed here -->
+		<dependency>
+   			<groupId>org.javassist</groupId>
+   			<artifactId>javassist</artifactId>
+   			<version>3.18.2-GA</version>
+		</dependency>
+  		
+  		
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernateVersion}</version>
+		</dependency>
+		<!-- Hibernate validation -->
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+        <!-- Hibernate Validator also requires an implementation of the Unified Expression Language
+         for evaluating dynamic expressions in constraint violation messages.-->
+		<dependency>
+   			<groupId>org.glassfish</groupId>
+   			<artifactId>javax.el</artifactId>
+   			<version>3.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
+		<!-- <dependency>
+    		<groupId>javax.el</groupId>
+    		<artifactId>javax.el-api</artifactId>
+    		<version>2.2.5</version>
+		</dependency> -->
+		
+		<!-- hz what is this -->
+		<dependency>
+   			<groupId>org.hibernate</groupId>
+   			<artifactId>hibernate-validator-cdi</artifactId>
+  			<version>5.3.3.Final</version>
+		</dependency>
+		<!-- end of db dependency -->
+		
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
+		</dependency>
+  		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>	
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- logging -->
+		<dependency>
+    		<groupId>org.slf4j</groupId>
+    		<artifactId>jcl-over-slf4j</artifactId>
+    		<version>1.7.21</version>
+		</dependency>
+		<dependency>
+   	 		<groupId>ch.qos.logback</groupId>
+    		<artifactId>logback-classic</artifactId>
+    		<version>1.1.7</version>
+    		<scope>test</scope>
+		</dependency>	
+		<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>4.11</version>
+      		<scope>test</scope>
+    	</dependency>
   </dependencies>
 
   <build>
