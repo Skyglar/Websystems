@@ -39,13 +39,13 @@ public class Equation {
 	public void setC(double c) {
 		this.c = c;
 	}
-	public double getX1() {
+	public Double getX1() {
 		return x1;
 	}
 	public void setX1(double x1) {
 		this.x1 = x1;
 	}
-	public double getX2() {
+	public Double getX2() {
 		return x2;
 	}
 	public void setX2(double x2) {

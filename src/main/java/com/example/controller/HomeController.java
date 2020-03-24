@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.model.dto.EquationDto;
 import com.example.service.EquationService;
 
-@Controller()
+@Controller
 public class HomeController {
 	
 	@Autowired 
