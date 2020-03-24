@@ -82,6 +82,14 @@
 			<version>1.11.9.RELEASE</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-jdbc</artifactId>
+    		<version>${springCoreVersion}</version>
+		</dependency>
+		
+		
 		<!-- Used for Hibernate4 LocalSessionFactoryBean -->	
   		<dependency>
 			<groupId>org.springframework</groupId>
@@ -115,7 +123,7 @@
     		<version>0.9.1.2</version>
     	</dependency>
 		
-		<!-- hz why this is needed here -->
+		<!-- bytecode for hibernate -->
 		<dependency>
    			<groupId>org.javassist</groupId>
    			<artifactId>javassist</artifactId>
