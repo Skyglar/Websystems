@@ -1,20 +1,14 @@
 package com.example.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class EquationService {
+import com.example.model.Equation;
+import com.example.model.dto.EquationDto;
 
-	public double equationCulc(double a, double b, double c) {
-		double D = (b*b) - 4 * a * c;
-		if(D < 0) {
-			return 0;
-		} else if(D == 1) {
-			return (-b + Math.sqrt(D)) / (2 * a);
-		} else {
-			double x1 = (-b + Math.sqrt(D)) / (2 * a);
-			double x2 = (-b - Math.sqrt(D)) / (2 * a);
-			return x1;
-		}
-	}
+public interface EquationService {
+
+	void equationCulc(EquationDto equationDto);
+	
+	List<Equation> findAllEquations();
+	
 }
