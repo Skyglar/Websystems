@@ -12,8 +12,8 @@ import com.example.service.EquationService;
 
 @Controller
 public class HomeController {
-	
-	@Autowired 
+
+	@Autowired
 	private EquationService equationService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -21,12 +21,21 @@ public class HomeController {
 		model.addAttribute("equation", new EquationDto());
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String equationForm(@ModelAttribute("equation") EquationDto equationDto) {
-		
+	public String equationForm(@ModelAttribute("equation") EquationDto equationDto, Model model) {
+
+		if (equationDto.getA() == null || equationDto.getA() == 0) {
+			model.addAttribute("error", "Property a cannot be empty or zero");		
+			return "index";
+		}
+		if(equationDto.getB() == null || equationDto.getB() == 0)
+			equationDto.setB(1.0);
+		if(equationDto.getC() == null) 
+			equationDto.setC(0.0);
+
 		equationService.equationCulc(equationDto);
-		
+
 		return "redirect:/examples";
 	}
 }

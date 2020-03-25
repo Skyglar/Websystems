@@ -1,33 +1,30 @@
 package com.example.model.dto;
 
-import javax.validation.constraints.NotNull;
-
 public class EquationDto {
 
-	@NotNull
-	private double a;
-	private double b;
-	private double c;
+	private Double a;	
+	private Double b;
+	private Double c;
 	
 	public EquationDto() {		
 	}
 	
-	public double getA() {
+	public Double getA() {
 		return a;
 	}
-	public void setA(double a) {
+	public void setA(Double a) {
 		this.a = a;
 	}
-	public double getB() {
+	public Double getB() {
 		return b;
 	}
-	public void setB(double b) {
+	public void setB(Double b) {
 		this.b = b;
 	}
-	public double getC() {
+	public Double getC() {
 		return c;
 	}
-	public void setC(double c) {
+	public void setC(Double c) {
 		this.c = c;
 	}
 }

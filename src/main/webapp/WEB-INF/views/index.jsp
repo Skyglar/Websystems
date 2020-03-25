@@ -10,6 +10,11 @@
 .error {
 	color: red;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
 </style>
 <title>Quadratic equation</title>
 </head>
@@ -32,22 +37,20 @@
   		<div class="form-group row">
     		<div class="form-row">
     			<div class="col">
-      				<form:input type="text" path="a" name="a" class="form-control form-control-sm"/>
-      				<form:errors path="a" cssClass="error"/>
+      				<form:input type="number" path="a" name="a" class="form-control form-control-sm"/>
+					<span class="error">${error}</span>
     			</div>
     			<div class="col">
     				<span><i>x<sup>2</sup> +</i></span>
     			</div>
     			<div class="col">
-      				<form:input type="text" path="b" name="b" class="form-control form-control-sm"/>
-      				<form:errors path="c" cssClass="error"/>		
+      				<form:input type="number" path="b" name="b" class="form-control form-control-sm"/>	
     			</div>
     			<div class="col">
     				<span><i>x +</i></span>
     			</div>
     			<div class="col">
-      				<form:input type="text" path="c" name="c" class="form-control form-control-sm"/>
-      				<form:errors path="c" cssClass="error"/>
+      				<form:input type="number" path="c" name="c" class="form-control form-control-sm"/>
     			</div>
     			<div class="col">
     				<span><i> = 0</i></span>
