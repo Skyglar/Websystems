@@ -1,1 +1,1 @@
-# Test project fro Web-Systems Solutions
+# Test project for Web-Systems Solutions
